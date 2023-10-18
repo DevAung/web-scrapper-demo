@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Branch fetch api test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      .container {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .text-input {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #3498db;
+        border-radius: 5px;
+        width: 300px;
+      }
+      .pretty-button {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100px;
+      }
+      .pretty-button:hover {
+        background-color: #2074a0;
+      }
+      .warnningText {
+        display: none;
+        margin-top: 2px;
+        color: red;
+      }
+      .brand-info {
+        max-width: 500px;
+        padding: 5px;
+        text-align: center;
+      }
+      .color-div {
+        width: 100px;
+        height: 100px;
+        margin: 3px;
+        text-align: center;
+        line-height: 100px;
+        color: #fff;
+        text-shadow: 1px 1px 3px black;
+        border: 1px solid black;
+      }
+
+      .font-div {
+        width: fit-content;
+        height: fit-content;
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
+        margin: 3px;
+      }
+      .colorGroup {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 5px;
+        justify-content: center;
+      }
+      .image-container {
+        margin: 3px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      img {
+        max-width: 50px;
+        max-height: 50px;
+      }
+      .divider {
+        width: 500px;
+        margin: 10px;
+        background-color: slateblue;
+        height: 2px;
+      }
+      details {
+        cursor: pointer;
+      }
+      details > summary {
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: " ▶";
+        color: blue;
+      }
+      details[open] summary:after {
+        content: "  ▼";
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Brand info</h1>
+      <form>
+        <input class="text-input" placeholder="Enter domain here" />
+        <input type="button" class="pretty-button" value="Get" />
+      </form>
+      <div class="warnningText">Please input the domain name</div>
+      <div class="brand-info"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
