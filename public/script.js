@@ -7,6 +7,7 @@ let domainValue;
 inputDiv.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     // Enter key was pressed
+    domainValue = e.target.value;
     if (domainValue) {
       warnningText.style.display = "none";
       fetchData(domainValue);
