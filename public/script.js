@@ -11,6 +11,7 @@ inputDiv.addEventListener("keypress", (e) => {
     domainValue = e.target.value;
     if (domainValue) {
       warnningText.style.display = "none";
+      notFoundText.style.display = "none";
       fetchData(domainValue);
     } else {
       warnningText.style.display = "block";
@@ -23,6 +24,7 @@ inputDiv.addEventListener("keypress", (e) => {
 prettyButton.addEventListener("click", (e) => {
   if (domainValue) {
     warnningText.style.display = "none";
+    notFoundText.style.display = "none";
     fetchData(domainValue);
   } else {
     warnningText.style.display = "block";
@@ -138,8 +140,10 @@ const fetchData = async (domain) => {
   );
   const data = await response.json();
   console.log(data);
-  if (data.message == "Not Found") {
-    return (notFoundText.style.display = "block");
+  if (data.message) {
+    notFoundText.style.display = "block";
+    notFoundText.innerText = data.message;
+    return;
   }
   makeUi(data);
   prettyButton.setAttribute("value", "GET");
