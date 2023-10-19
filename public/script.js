@@ -2,6 +2,7 @@ const inputDiv = document.querySelector(".text-input");
 const prettyButton = document.querySelector(".pretty-button");
 const brandDiv = document.querySelector(".brand-info");
 const warnningText = document.querySelector(".warnningText");
+const notFoundText = document.querySelector(".notFoundText");
 let domainValue;
 
 inputDiv.addEventListener("keypress", (e) => {
@@ -137,6 +138,9 @@ const fetchData = async (domain) => {
   );
   const data = await response.json();
   console.log(data);
+  if (data.message == "Not Found") {
+    return (notFoundText.style.display = "block");
+  }
   makeUi(data);
   prettyButton.setAttribute("value", "GET");
 };
