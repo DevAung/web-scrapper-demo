@@ -14,6 +14,13 @@
         align-items: center;
         justify-content: center;
       }
+      .finder {
+        max-width: 500px;
+        border-radius: 5px 5px 0 0;
+        background-color: #212324;
+        padding: 10px;
+        
+      }
       .text-input {
         padding: 10px;
         font-size: 16px;
@@ -29,7 +36,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        width: 100px;
+        width: 150px;
       }
       .pretty-button:hover {
         background-color: #2074a0;
@@ -40,9 +47,15 @@
         color: red;
       }
       .brand-info {
-        max-width: 500px;
-        padding: 5px;
+        width: 500px;
+        height: fit-content;
         text-align: center;
+        position: relative;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #444646;
+        
       }
       .color-div {
         width: 100px;
@@ -62,6 +75,7 @@
         text-align: center;
         padding: 10px;
         margin: 3px;
+        color: blanchedalmond;
       }
       .colorGroup {
         display: flex;
@@ -85,38 +99,47 @@
         max-height: 50px;
       }
       .divider {
-        width: 500px;
+        width: 200px;
         margin: 10px;
         background-color: slateblue;
-        height: 2px;
+        height: 4px;
       }
       details {
         cursor: pointer;
       }
       details > summary {
         list-style: none;
+        color: rgb(249, 249, 253);
+        font-weight: 700;
+        line-height: 30px;
+        
       }
       summary::-webkit-details-marker {
         display: none;
       }
 
       summary::after {
-        content: " ▶";
-        color: blue;
-      }
-      details[open] summary:after {
         content: "  ▼";
         color: blue;
+        position: absolute;
+        right: 35%;
+      }
+      details[open] summary::after {
+        content: " ▲";
+        color: blue;
+
+        position: absolute;
+        right: 35%;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <h1>Find Brand info</h1>
-      <form>
+      <div class="finder">
         <input class="text-input" placeholder="Enter domain here" />
         <input type="button" class="pretty-button" value="Get" />
-      </form>
+      </div>
       <div class="warnningText">Please input the domain name</div>
       <div class="brand-info"></div>
     </div>

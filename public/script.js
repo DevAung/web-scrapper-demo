@@ -4,22 +4,19 @@ const brandDiv = document.querySelector(".brand-info");
 const warnningText = document.querySelector(".warnningText");
 let domainValue;
 
-inputDiv.addEventListener("change", (e) => {
-  domainValue = e.target.value;
+inputDiv.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    // Enter key was pressed
+    if (domainValue) {
+      warnningText.style.display = "none";
+      fetchData(domainValue);
+    } else {
+      warnningText.style.display = "block";
+    }
+  } else {
+    domainValue = e.target.value;
+  }
 });
-// inputDiv.addEventListener("keypress", (e) => {
-//   if (e.key === "Enter") {
-//     // Enter key was pressed
-//     if (domainValue) {
-//       warnningText.style.display = "none";
-//       fetchData(domainValue);
-//     } else {
-//       warnningText.style.display = "block";
-//     }
-//   } else {
-//     domainValue = e.target.value;
-//   }
-// });
 
 prettyButton.addEventListener("click", (e) => {
   if (domainValue) {
@@ -34,6 +31,7 @@ const makeUi = (data) => {
   const { name, domain, description, links, colors, fonts, logos } = data;
   brandDiv.innerHTML = "";
   inputDiv.value = "";
+  domainValue = "";
 
   //website name
   const nameDiv = document.createElement("div");
