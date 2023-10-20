@@ -6,10 +6,17 @@ const notFoundText = document.querySelector(".notFoundText");
 let domainValue;
 
 const hostNameFinder = (data) => {
-  const newUrl = new URL(data);
-  const foundedHost = newUrl.hostname;
-  console.log(foundedHost);
-  return foundedHost;
+  if (data.includes("https" || "http")) {
+    const newUrl = new URL(data);
+    const foundedHost = newUrl.hostname;
+    console.log(foundedHost);
+    return foundedHost;
+  } else if (data.includes("/")) {
+    const newUrl = data.split("/");
+    return newUrl[0];
+  } else {
+    return data;
+  }
 };
 
 inputDiv.addEventListener("keypress", (e) => {
