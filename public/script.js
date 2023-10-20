@@ -5,11 +5,19 @@ const warnningText = document.querySelector(".warnningText");
 const notFoundText = document.querySelector(".notFoundText");
 let domainValue;
 
+const hostNameFinder = (data) => {
+  const newUrl = new URL(data);
+  const foundedHost = newUrl.hostname;
+  console.log(foundedHost);
+  return foundedHost;
+};
+
 inputDiv.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     // Enter key was pressed
-    domainValue = e.target.value;
+    domainValue = hostNameFinder(e.target.value);
     if (domainValue) {
+      console.log(domainValue);
       warnningText.style.display = "none";
       notFoundText.style.display = "none";
       fetchData(domainValue);
@@ -17,11 +25,12 @@ inputDiv.addEventListener("keypress", (e) => {
       warnningText.style.display = "block";
     }
   } else {
-    domainValue = e.target.value;
+    domainValue = hostNameFinder(e.target.value);
   }
 });
 
 prettyButton.addEventListener("click", (e) => {
+  domainValue = hostNameFinder(e.target.value);
   if (domainValue) {
     warnningText.style.display = "none";
     notFoundText.style.display = "none";
@@ -143,6 +152,7 @@ const fetchData = async (domain) => {
   if (data.message) {
     notFoundText.style.display = "block";
     notFoundText.innerText = data.message;
+    prettyButton.setAttribute("value", "Try Again!");
     return;
   }
   makeUi(data);
